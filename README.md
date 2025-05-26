@@ -4,4 +4,5 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 #1 Commit creacion de las vistas pages: home, personas, estudiantes, profesores, administrativos, cursos e inscripciones.
 
-![image](https://github.com/user-attachments/assets/6719cf3c-b6d0-4b25-bb8b-99c921b85c00)
+![image](https://github.com/user-attachments/assets/fed6d6d2-38f8-4d9c-8d8c-a8737c6d0dd8)
+
