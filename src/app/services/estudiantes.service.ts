@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap } from 'rxjs';
+import { catchError, tap } from 'rxjs';
 import { Estudiante } from '../interfaces/personas.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

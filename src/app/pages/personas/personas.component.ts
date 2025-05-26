@@ -7,10 +7,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { TablaComponent } from '../../shared/tabla/tabla.component';
 
 @Component({
   selector: 'app-personas',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, HttpClientModule, MatSnackBarModule, MatTableModule, MatButtonModule, MatIconModule, TablaComponent],
   templateUrl: './personas.component.html',
   styleUrl: './personas.component.css',
 })
@@ -24,15 +26,16 @@ export class PersonasComponent implements OnInit{
   ngOnInit() {
     this.personaService.getAllPersonas().subscribe(data => {
       this.listaPersonas = data;
+      console.log(this.listaPersonas)
     });
   }
 
-  editarPersona(p: Persona) {
-    console.log('Editar:', p);
+  editarPersona() {
+    console.log('Editar:');
   }
 
-  eliminarPersona(p: Persona) {
-    console.log('Eliminar:', p);
+  eliminarPersona() {
+    console.log('Eliminar:');
   }
 
 }

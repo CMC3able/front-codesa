@@ -1,1 +1,6 @@
 <p>estudiantes works!</p>
+<app-tabla
+  [personas]="listaEstudiantes"
+  (editar)="editarPersona($event)"
+  (eliminar)="eliminarPersona($event)">
+</app-tabla>
