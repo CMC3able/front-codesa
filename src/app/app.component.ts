@@ -14,11 +14,9 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    // Escuchar eventos de navegación para detectar cuando cambian las rutas
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        // Actualizar el estado de la página según la URL
-        this.isLoginPage = event.url === '/login';  // O '/home' si ese es el login
+        this.isLoginPage = event.url === '/login';
       }
     });
   }

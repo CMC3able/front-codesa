@@ -19,7 +19,8 @@ import { TablaComponent } from '../../shared/tabla/tabla.component';
 export class PersonasComponent implements OnInit{
 
   listaPersonas: Persona[] = [];
-  columnas: string[] = ['nombre', 'acciones'];
+  displayedColumns: string[] = ['nombre', 'apellido', 'fechaNacimiento', 'email', 'telefono', 'acciones'];
+
 
   constructor(private personaService: PersonasService) {}
 
