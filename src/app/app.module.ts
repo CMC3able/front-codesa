@@ -27,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     FormsModule,
     MatSnackBarModule,
-    HttpClientModule  
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

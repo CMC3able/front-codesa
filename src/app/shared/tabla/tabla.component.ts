@@ -14,7 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 export class TablaComponent{
 
   @Input() personas: any[] = [];
-  @Input() displayedColumns: any[] = [];
+  @Input() displayedColumns: string[] = [];
   @Output() editar = new EventEmitter<any>();
   @Output() eliminar = new EventEmitter<any>();
 

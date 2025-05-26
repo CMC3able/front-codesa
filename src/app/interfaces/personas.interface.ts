@@ -20,7 +20,7 @@ export interface Profesor {
   id: number;
   idPersona: number;
   especialidad: string;
-  fechaInscripcion: string;
+  fechaContratacion: string;
   persona: Persona;
 }
 
@@ -30,6 +30,7 @@ export interface Persona {
   apellido: string;
   fechaNacimiento: string;
   email: string;
+  telefono: string;
 }
 
 export interface Estudiante {

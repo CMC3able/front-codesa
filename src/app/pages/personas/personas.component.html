@@ -1,5 +1,13 @@
 <h2>Listado de Personas</h2>
 
+<button mat-stroked-button (click)="abriModal()">Agregar</button>
+
+<ng-template #contentBody>
+  <div>
+    Agregar de personas
+  </div>
+</ng-template>
+
 <app-tabla
   [personas]="listaPersonas"
   [displayedColumns]="displayedColumns"

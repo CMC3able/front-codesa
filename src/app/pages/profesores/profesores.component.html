@@ -1,1 +1,16 @@
-<p>profesores works!</p>
+<h2>Listado de Profesores</h2>
+
+<button mat-stroked-button (click)="abriModal()">Agregar</button>
+
+<ng-template #contentBody>
+  <div>
+    Agregar de profesores
+  </div>
+</ng-template>
+
+<app-tabla
+  [personas]="listaPersonas"
+  [displayedColumns]="displayedColumns"
+  (editar)="editarPersona($event)"
+  (eliminar)="eliminarPersona($event)">
+</app-tabla>
