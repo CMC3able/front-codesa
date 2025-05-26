@@ -1,34 +1,14 @@
 <table mat-table [dataSource]="personas" class="mat-elevation-z8">
-  <ng-container matColumnDef="nombre">
-    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-    <td mat-cell *matCellDef="let persona"> {{persona.nombre}} </td>
+  <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+    <th mat-header-cell *matHeaderCellDef> {{column | titlecase}} </th>
+    <td mat-cell *matCellDef="let row"> {{row[column]}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="apellido">
-    <th mat-header-cell *matHeaderCellDef> Apellido </th>
-    <td mat-cell *matCellDef="let persona"> {{persona.apellido}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="fechaNacimiento">
-    <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento </th>
-    <td mat-cell *matCellDef="let persona"> {{persona.fechaNacimiento}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let persona"> {{persona.email}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="telefono">
-    <th mat-header-cell *matHeaderCellDef> Telefono </th>
-    <td mat-cell *matCellDef="let persona"> {{persona.telefono}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="acciones">
+  <ng-container>
     <th mat-header-cell *matHeaderCellDef> Acciones </th>
-    <td mat-cell *matCellDef="let persona">
-      <button mat-button color="primary" (click)="editar.emit(persona)">Editar</button>
-      <button mat-button color="warn" (click)="eliminar.emit(persona)">Eliminar</button>
+    <td mat-cell *matCellDef="let row">
+      <button mat-button color="primary" (click)="editar.emit(row)">Editar</button>
+      <button mat-button color="warn" (click)="eliminar.emit(row)">Eliminar</button>
     </td>
   </ng-container>
 

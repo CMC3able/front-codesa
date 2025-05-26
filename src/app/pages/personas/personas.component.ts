@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { PersonasService } from '../../services/personas.service';
 import { Persona } from '../../interfaces/personas.interface';
 import { CommonModule } from '@angular/common';
@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { TablaComponent } from '../../shared/tabla/tabla.component';
+import { ModalService } from '../../shared/modal.service';
 
 @Component({
   selector: 'app-personas',
@@ -21,8 +22,10 @@ export class PersonasComponent implements OnInit{
   listaPersonas: Persona[] = [];
   displayedColumns: string[] = ['nombre', 'apellido', 'fechaNacimiento', 'email', 'telefono', 'acciones'];
 
-
-  constructor(private personaService: PersonasService) {}
+  @ViewChild('contentBody') contentBodyRed!: TemplateRef<HTMLElement>;
+  constructor(private personaService: PersonasService,
+    private readonly modalServices: ModalService
+  ) {}
 
   ngOnInit() {
     this.personaService.getAllPersonas().subscribe(data => {
@@ -37,6 +40,10 @@ export class PersonasComponent implements OnInit{
 
   eliminarPersona() {
     console.log('Eliminar:');
+  }
+
+  abriModal() {
+    this.modalServices.openDialog(this.contentBodyRed);
   }
 
 }

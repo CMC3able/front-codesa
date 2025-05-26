@@ -1,36 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { Estudiante, Persona } from '../../interfaces/personas.interface';
+import { Estudiante } from '../../interfaces/personas.interface';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { TablaComponent } from '../../shared/tabla/tabla.component';
 import { EstudiantesService } from '../../services/estudiantes.service';
-import { NavigationStart, Router } from '@angular/router';
+import { ModalService } from '../../shared/modal.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-estudiantes',
-  imports: [MatIconModule, CommonModule, MatTableModule, TablaComponent],
+  imports: [MatIconModule, CommonModule, MatTableModule, TablaComponent, MatButtonModule],
   templateUrl: './estudiantes.component.html',
   styleUrl: './estudiantes.component.css'
 })
 export class EstudiantesComponent implements OnInit {
 
   listaEstudiantes: Estudiante[] = [];
-  listaPersonas: Persona[] = [];
-  isLoginPage = false;
+  listaPersonas: any[] = [];
+  displayedColumns: string[] = ['nombre', 'apellido', 'fechaNacimiento', 'email', 'telefono', 'numeroMatricula', 'grado'];
 
-    constructor(private estudiantesServices: EstudiantesService, private router: Router) {}
+    @ViewChild('contentBody') contentBodyRed!: TemplateRef<HTMLElement>;
+    constructor(private estudiantesServices: EstudiantesService,
+      private readonly modalServices: ModalService
+    ) {}
   
     ngOnInit() {
       this.estudiantesServices.getAllEstudiantes().subscribe(data => {
         this.listaEstudiantes = data;
+        this.listaPersonas = data.map(item => ({...item, ...item.persona, persona: undefined}));
         console.log(this.listaEstudiantes);
       });
-      this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.isLoginPage = event.url === '/login';
-      }
-    });
     }
   
     editarPersona(e: Estudiante) {
@@ -40,4 +40,8 @@ export class EstudiantesComponent implements OnInit {
     eliminarPersona(e: Estudiante) {
       console.log('Eliminar:', e);
     }
+
+    abriModal() {
+    this.modalServices.openDialog(this.contentBodyRed);
+  }
 }

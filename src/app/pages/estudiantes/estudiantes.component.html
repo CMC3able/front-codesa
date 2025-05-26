@@ -1,6 +1,16 @@
-<p>estudiantes works!</p>
+<h2>Listado de Estudiantes</h2>
+
+<button mat-stroked-button (click)="abriModal()">Agregar</button>
+
+<ng-template #contentBody>
+  <div>
+    Agregar de estudiantes
+  </div>
+</ng-template>
+
 <app-tabla
-  [personas]="listaEstudiantes"
+  [personas]="listaPersonas"
+  [displayedColumns]="displayedColumns"
   (editar)="editarPersona($event)"
   (eliminar)="eliminarPersona($event)">
 </app-tabla>
