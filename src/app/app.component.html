@@ -1,17 +1,14 @@
 <div class="container" *ngIf="isLoginPage">
-  <!-- Columna izquierda (3/4 del ancho) -->
   <div class="left">
     <h1>Codesa College</h1>
   </div>
 
-  <!-- Columna derecha (1/4 del ancho) -->
   <div class="right">
     <button (click)="goToHome()">Ingresar</button>
   </div>
 </div>
 
 <div class="container2" *ngIf="!isLoginPage">
-  <!-- Columna izquierda (3/4 del ancho) -->
   <div class="right">
     <div class="list">
     <h2>Menu</h2>
@@ -25,7 +22,6 @@
     </div>
   </div>
 
-  <!-- Columna derecha (1/4 del ancho) -->
   <div class="left">
     <router-outlet></router-outlet>
   </div>
