@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Persona } from '../interfaces/personas.interface';
-import { catchError, of, tap } from 'rxjs';
+import { catchError, of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,7 +15,7 @@ export class PersonasService {
   constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
 
   getAllPersonas() {
-    return this.http.get<any[]>(this.apiUrl).pipe(
+    return this.http.get<Persona[]>(this.apiUrl).pipe(
       catchError((err) => {
         this.snackbar.open('Error al cargar personas', 'Cerrar', { duration: 3000 });
         console.error(err);

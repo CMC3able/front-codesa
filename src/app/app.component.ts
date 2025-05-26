@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,8 +8,8 @@ import { ActivatedRoute, NavigationStart, Router, RouterOutlet } from '@angular/
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  isLoginPage: boolean = false;
+export class AppComponent implements OnInit {
+  isLoginPage = false;
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
